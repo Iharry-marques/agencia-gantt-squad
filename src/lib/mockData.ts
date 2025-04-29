@@ -8,7 +8,7 @@ export const mockData = [
     "progress": "30",
     "responsible": "Ana Silva",
     "group_subgroup": "Design / UI",
-    "client": "TechCorp",
+    "client": "SAMSUNG",
     "project": "Aplicativo Mobile",
     "tipo": "Tarefa",
     "PipelineStepID": "13366",
@@ -23,8 +23,8 @@ export const mockData = [
     "end": "2025-04-28T03:00:00",
     "progress": "50",
     "responsible": "Carlos Mendes",
-    "group_subgroup": "Desenvolvimento / Frontend",
-    "client": "TechCorp",
+    "group_subgroup": "Criação / Bruno Prosperi / Bruno Brasil",
+    "client": "EUDORA",
     "project": "Aplicativo Mobile",
     "tipo": "Tarefa",
     "PipelineStepID": "13366",
@@ -39,12 +39,12 @@ export const mockData = [
     "end": "2025-04-24T03:00:00",
     "progress": "100",
     "responsible": "Marina Costa",
-    "group_subgroup": "UX / Pesquisa",
-    "client": "MediaGroup",
+    "group_subgroup": "BI / Caetano Camara / Augusto Domingues",
+    "client": "O.U.i",
     "project": "Redesign Website",
     "tipo": "Tarefa",
     "PipelineStepID": "13367",
-    "PipelineStepTitle": "Concluído",
+    "PipelineStepTitle": "Backlog",
     "creation_date": "2025-04-10T09:00:00",
     "modification_date": "2025-04-24T16:00:00"
   },
@@ -55,12 +55,12 @@ export const mockData = [
     "end": "2025-05-02T03:00:00",
     "progress": "20",
     "responsible": "Roberto Alves",
-    "group_subgroup": "Desenvolvimento / Backend",
-    "client": "TechCorp",
+    "group_subgroup": "Mídia / Leonardo Takai / Teda Leite",
+    "client": "SICREDI",
     "project": "Aplicativo Mobile",
     "tipo": "Subtarefa",
     "PipelineStepID": "13365",
-    "PipelineStepTitle": "Planejamento",
+    "PipelineStepTitle": "Em Validação",
     "creation_date": "2025-04-18T10:00:00",
     "modification_date": "2025-04-23T14:30:00"
   },
@@ -71,12 +71,12 @@ export const mockData = [
     "end": "2025-04-30T03:00:00",
     "progress": "60",
     "responsible": "Fernanda Lima",
-    "group_subgroup": "Marketing / Conteúdo",
-    "client": "MediaGroup",
+    "group_subgroup": "Operações / Ana Pereira",
+    "client": "ARAMIS",
     "project": "Campanha Digital",
     "tipo": "Tarefa",
     "PipelineStepID": "13366",
-    "PipelineStepTitle": "Em Produção",
+    "PipelineStepTitle": "Em Ajuste",
     "creation_date": "2025-04-20T13:00:00",
     "modification_date": "2025-04-25T09:15:00"
   },
@@ -87,12 +87,12 @@ export const mockData = [
     "end": "2025-05-03T03:00:00",
     "progress": "0",
     "responsible": "Lucas Santos",
-    "group_subgroup": "Marketing / SEO",
-    "client": "MediaGroup",
+    "group_subgroup": "Operações / Carol Derra / André Scandiussi",
+    "client": "ESPORTES DA SORTE",
     "project": "Redesign Website",
     "tipo": "Subtarefa",
     "PipelineStepID": "13364",
-    "PipelineStepTitle": "A fazer",
+    "PipelineStepTitle": "Não iniciada",
     "creation_date": "2025-04-22T11:00:00",
     "modification_date": "2025-04-22T11:00:00"
   },
@@ -103,12 +103,12 @@ export const mockData = [
     "end": "2025-05-01T03:00:00",
     "progress": "0",
     "responsible": "Ana Silva",
-    "group_subgroup": "UX / Testes",
-    "client": "TechCorp",
+    "group_subgroup": "Mídia / Leonardo Takai / Flavio Leite / Anne Borges",
+    "client": "IDEAZARVOS",
     "project": "Aplicativo Mobile",
     "tipo": "Subtarefa",
     "PipelineStepID": "13365",
-    "PipelineStepTitle": "Planejamento",
+    "PipelineStepTitle": "Em Aprovação Cliente",
     "creation_date": "2025-04-23T14:00:00",
     "modification_date": "2025-04-23T14:00:00"
   },
@@ -119,8 +119,8 @@ export const mockData = [
     "end": "2025-04-27T03:00:00",
     "progress": "80",
     "responsible": "João Oliveira",
-    "group_subgroup": "Design / Email",
-    "client": "RetailCo",
+    "group_subgroup": "Operações / Raquel Hipólito / Fernanda knijnik / Anne Luz",
+    "client": "AMERICANAS",
     "project": "Campanha Sazonal",
     "tipo": "Tarefa",
     "PipelineStepID": "13366",
@@ -135,8 +135,8 @@ export const mockData = [
     "end": "2025-04-23T12:00:00",
     "progress": "100",
     "responsible": "Equipe Completa",
-    "group_subgroup": "Gestão / Reuniões",
-    "client": "TechCorp",
+    "group_subgroup": "Ana Luisa Andre",
+    "client": "SAMSUNGE-STORE",
     "project": "Aplicativo Mobile",
     "tipo": "Tarefa",
     "PipelineStepID": "13367",
@@ -151,16 +151,62 @@ export const mockData = [
     "end": "2025-05-05T23:59:00",
     "progress": "0",
     "responsible": "Equipe Marketing",
-    "group_subgroup": "Marketing / Lançamento",
-    "client": "RetailCo",
+    "group_subgroup": "BI / Caetano Camara / Camila Franco",
+    "client": "SunoCreators",
     "project": "Campanha Sazonal",
     "tipo": "Tarefa",
     "PipelineStepID": "13364",
-    "PipelineStepTitle": "A fazer",
+    "PipelineStepTitle": "Não iniciada",
     "creation_date": "2025-04-15T11:00:00",
     "modification_date": "2025-04-20T10:00:00"
   }
 ];
+
+// Dados reais para os filtros
+export const filterData = {
+  groups: [
+    "BI",
+    "Bruno Prosperi",
+    "Criação",
+    "Mídia",
+    "Operações",
+    "Ana Luisa Andre"
+  ],
+  
+  subgroups: {
+    "BI": ["Caetano Camara"],
+    "Criação": ["Bruno Prosperi"],
+    "Mídia": ["Leonardo Takai"],
+    "Operações": ["Ana Pereira", "Carol Derra", "Izabel Vieira", "Raquel Hipólito", "Silvio Eiras"]
+  },
+  
+  clients: [
+    "EUDORA",
+    "O.U.i",
+    "SICREDI",
+    "ARAMIS",
+    "ESPORTES DA SORTE",
+    "SAMSUNG",
+    "IDEAZARVOS",
+    "AMERICANAS",
+    "SAMSUNGE-STORE",
+    "SunoCreators"
+  ],
+  
+  types: [
+    "Tarefa",
+    "Subtarefa"
+  ],
+  
+  statuses: [
+    "Backlog",
+    "Em Produção",
+    "Em Ajuste",
+    "Não iniciada",
+    "Em Validação",
+    "Em Aprovação Cliente"
+  ]
+};
 
 export const loadData = async () => {
   // Em um cenário real, carregaria de um arquivo local ou API
@@ -170,4 +216,40 @@ export const loadData = async () => {
   
   // Por enquanto, retornamos os dados mockados
   return mockData;
+};
+
+// Função para extrair grupos principais dos dados
+export const extractMainGroups = (data) => {
+  if (!data || data.length === 0) return [];
+  
+  const groups = new Set();
+  
+  data.forEach(item => {
+    if (item.group_subgroup) {
+      const parts = item.group_subgroup.split(' / ');
+      if (parts.length > 0) {
+        groups.add(parts[0]);
+      }
+    }
+  });
+  
+  return Array.from(groups);
+};
+
+// Função para extrair subgrupos para um grupo principal específico
+export const extractSubgroupsForGroup = (data, mainGroup) => {
+  if (!data || data.length === 0) return [];
+  
+  const subgroups = new Set();
+  
+  data.forEach(item => {
+    if (item.group_subgroup) {
+      const parts = item.group_subgroup.split(' / ');
+      if (parts.length > 1 && parts[0] === mainGroup) {
+        subgroups.add(parts[1]);
+      }
+    }
+  });
+  
+  return Array.from(subgroups);
 };

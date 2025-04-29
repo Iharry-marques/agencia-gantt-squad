@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Select } from '@/components/ui/select';
+import { filterData, extractMainGroups, extractSubgroupsForGroup } from '@/lib/mockData';
 
 interface FiltersProps {
   data: any[];
@@ -15,40 +15,51 @@ interface FiltersProps {
 }
 
 const Filters: React.FC<FiltersProps> = ({ data, activeTab, filters, setFilters }) => {
-  const [groups, setGroups] = useState<string[]>([]);
+  const [mainGroups, setMainGroups] = useState<string[]>([]);
+  const [subgroups, setSubgroups] = useState<string[]>([]);
   const [clients, setClients] = useState<string[]>([]);
+  const [types, setTypes] = useState<string[]>([]);
   const [statuses, setStatuses] = useState<string[]>([]);
   
-  // Extract unique values for filters
+  // Extract unique values for filters when data changes
   useEffect(() => {
     if (data && data.length > 0) {
-      // Extract unique groups
-      const uniqueGroups = [...new Set(data.map(item => {
-        const groupParts = item.group_subgroup?.split(' / ');
-        return groupParts && groupParts.length > 0 ? groupParts[0] : '';
-      }))].filter(Boolean);
+      // Use the real data for filters if available
+      setMainGroups(['Todos', ...filterData.groups]);
+      setClients(['Todos', ...filterData.clients]);
+      setTypes(['Todos', ...filterData.types]);
+      setStatuses(['Todos', ...filterData.statuses]);
       
-      // Extract unique clients
-      const uniqueClients = [...new Set(data.map(item => item.client))].filter(Boolean);
-      
-      // Extract unique statuses
-      const uniqueStatuses = [...new Set(data.map(item => item.PipelineStepTitle))].filter(Boolean);
-      
-      setGroups(uniqueGroups);
-      setClients(uniqueClients);
-      setStatuses(uniqueStatuses);
+      // If a main group is selected, load its subgroups
+      if (filters.group && filters.group !== 'Todos') {
+        // For dynamic data, we would use this:
+        // const subgroupsForMainGroup = extractSubgroupsForGroup(data, filters.group);
+        // For now, use the predefined structure:
+        const subgroupsForMainGroup = filterData.subgroups[filters.group] || [];
+        setSubgroups(['Todos', ...subgroupsForMainGroup]);
+      } else {
+        setSubgroups([]);
+      }
     }
-  }, [data]);
+  }, [data, filters.group]);
   
   const handleFilterChange = (key: string, value: string) => {
-    setFilters({
-      ...filters,
-      [key]: value
-    });
+    // If changing the main group, reset any subgroup selection
+    if (key === 'group') {
+      setFilters({
+        ...filters,
+        [key]: value === 'Todos' ? '' : value
+      });
+    } else {
+      setFilters({
+        ...filters,
+        [key]: value === 'Todos' ? '' : value
+      });
+    }
   };
   
   return (
-    <div className="filter-container">
+    <div className="filter-container mb-6">
       <h2 className="text-lg font-medium mb-4">Filtros</h2>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -58,11 +69,10 @@ const Filters: React.FC<FiltersProps> = ({ data, activeTab, filters, setFilters 
           </label>
           <select 
             className="w-full border border-gray-300 rounded-md p-2 text-sm"
-            value={filters.group}
+            value={filters.group || 'Todos'}
             onChange={(e) => handleFilterChange('group', e.target.value)}
           >
-            <option value="">Todos os grupos</option>
-            {groups.map((group) => (
+            {mainGroups.map((group) => (
               <option key={group} value={group}>
                 {group}
               </option>
@@ -70,16 +80,33 @@ const Filters: React.FC<FiltersProps> = ({ data, activeTab, filters, setFilters 
           </select>
         </div>
         
+        {filters.group && filters.group !== 'Todos' && subgroups.length > 0 && (
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Subgrupo
+            </label>
+            <select 
+              className="w-full border border-gray-300 rounded-md p-2 text-sm"
+              defaultValue="Todos"
+            >
+              {subgroups.map((subgroup) => (
+                <option key={subgroup} value={subgroup}>
+                  {subgroup}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+        
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Cliente
           </label>
           <select 
             className="w-full border border-gray-300 rounded-md p-2 text-sm"
-            value={filters.client}
+            value={filters.client || 'Todos'}
             onChange={(e) => handleFilterChange('client', e.target.value)}
           >
-            <option value="">Todos os clientes</option>
             {clients.map((client) => (
               <option key={client} value={client}>
                 {client}
@@ -94,12 +121,14 @@ const Filters: React.FC<FiltersProps> = ({ data, activeTab, filters, setFilters 
           </label>
           <select 
             className="w-full border border-gray-300 rounded-md p-2 text-sm"
-            value={filters.type}
+            value={filters.type || 'Todos'}
             onChange={(e) => handleFilterChange('type', e.target.value)}
           >
-            <option value="">Todos os tipos</option>
-            <option value="Tarefa">Tarefa</option>
-            <option value="Subtarefa">Subtarefa</option>
+            {types.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
           </select>
         </div>
         
@@ -109,10 +138,9 @@ const Filters: React.FC<FiltersProps> = ({ data, activeTab, filters, setFilters 
           </label>
           <select 
             className="w-full border border-gray-300 rounded-md p-2 text-sm"
-            value={filters.status}
+            value={filters.status || 'Todos'}
             onChange={(e) => handleFilterChange('status', e.target.value)}
           >
-            <option value="">Todos os status</option>
             {statuses.map((status) => (
               <option key={status} value={status}>
                 {status}
@@ -120,6 +148,21 @@ const Filters: React.FC<FiltersProps> = ({ data, activeTab, filters, setFilters 
             ))}
           </select>
         </div>
+      </div>
+      
+      {/* Reset Filters Button */}
+      <div className="mt-4">
+        <button 
+          className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors text-sm"
+          onClick={() => setFilters({
+            group: '',
+            client: '',
+            type: '',
+            status: ''
+          })}
+        >
+          Limpar Filtros
+        </button>
       </div>
     </div>
   );

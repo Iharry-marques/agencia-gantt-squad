@@ -12,6 +12,8 @@ interface Task {
   progress: number;
   dependencies?: string;
   custom_class?: string;
+  // Add _data property to Task interface
+  _data: TaskData;
 }
 
 // Tipagem para os dados brutos da API
@@ -210,8 +212,8 @@ const GanttChart: React.FC<GanttChartProps> = ({ data, activeTab, filters, viewM
         </div>
       )}
       
-      <style jsx>{`
-        ${processData().map(task => {
+      <style>
+        {processData().map(task => {
           const colorKey = activeTab === 'equipe' 
             ? (task._data.group_subgroup?.split(' / ')[0] || '')
             : task._data.client;
@@ -220,7 +222,7 @@ const GanttChart: React.FC<GanttChartProps> = ({ data, activeTab, filters, viewM
           return `.gantt .bar.task-${colorKey.replace(/\s+/g, '-').toLowerCase()} .bar-progress { fill: ${color}; }
                  .gantt .bar.task-${colorKey.replace(/\s+/g, '-').toLowerCase()} { fill: ${color}25; stroke: ${color}; }`;
         }).join('\n')}
-      `}</style>
+      </style>
     </div>
   );
 };
