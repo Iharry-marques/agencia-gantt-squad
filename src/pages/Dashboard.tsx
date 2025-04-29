@@ -14,6 +14,7 @@ const Dashboard = () => {
   const [data, setData] = useState<any[]>([]);
   const [filters, setFilters] = useState({
     group: '',
+    subgroup: '',
     client: '',
     type: '',
     status: ''
@@ -68,10 +69,19 @@ const Dashboard = () => {
   // Função para exportar dados em CSV
   const handleExportCSV = () => {
     const filteredData = data.filter(item => {
+      // Filter by group
       if (filters.group) {
         const groupParts = item.group_subgroup?.split(' / ');
         if (!(groupParts && groupParts.length > 0 && groupParts[0] === filters.group)) {
           return false;
+        }
+        
+        // Filter by subgroup if selected
+        if (filters.subgroup && groupParts) {
+          const subgroupPath = item.group_subgroup?.substring(filters.group.length + 3); // +3 for " / "
+          if (!subgroupPath.startsWith(filters.subgroup)) {
+            return false;
+          }
         }
       }
       
@@ -127,8 +137,9 @@ const Dashboard = () => {
       </main>
       
       <footer className="mt-auto py-4 bg-white border-t border-gray-200">
-        <div className="container mx-auto px-4 text-center text-gray-500 text-sm">
-          SOMOS • CREATORS | Dashboard Gantt © {new Date().getFullYear()}
+        <div className="container mx-auto px-4 flex justify-center items-center text-gray-500 text-sm gap-2">
+          <img src="/lovable-uploads/9ae2674c-6fc6-4ca8-8b8b-647d57cffc61.png" alt="SOMOS CREATORS Logo" className="h-6" />
+          <span>SOMOS • CREATORS | Dashboard Gantt © {new Date().getFullYear()}</span>
         </div>
       </footer>
     </div>

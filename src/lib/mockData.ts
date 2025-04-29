@@ -165,19 +165,54 @@ export const mockData = [
 // Dados reais para os filtros
 export const filterData = {
   groups: [
-    "BI",
-    "Bruno Prosperi",
     "Criação",
     "Mídia",
     "Operações",
-    "Ana Luisa Andre"
+    "Produção",
+    "BI"
   ],
   
   subgroups: {
-    "BI": ["Caetano Camara"],
-    "Criação": ["Bruno Prosperi"],
-    "Mídia": ["Leonardo Takai"],
-    "Operações": ["Ana Pereira", "Carol Derra", "Izabel Vieira", "Raquel Hipólito", "Silvio Eiras"]
+    "Criação": ["Bruno Prosperi", "Bruno Prosperi / Bruno Brasil", "Bruno Prosperi / Gabrielle Henriques", "Bruno Prosperi / Marco Monteiro", "Bruno Prosperi / Paulo Montenegro"],
+    "Mídia": [
+      "Leonardo Takai", 
+      "Leonardo Takai / Teda Leite",
+      "Leonardo Takai / Teda Leite / Bruno Surano",
+      "Leonardo Takai / Teda Leite / Fernanda Zenteno",
+      "Leonardo Takai / Teda Leite / Gustavo Hipólito",
+      "Leonardo Takai / Teda Leite / Matheus Casado",
+      "Leonardo Takai / Teda Leite / Pedro Nogueira",
+      "Leonardo Takai / Flavio Leite",
+      "Leonardo Takai / Flavio Leite / Anne Borges",
+      "Leonardo Takai / Flavio Leite / Juliane Araujo",
+      "Leonardo Takai / Guilherme Ferreira",
+      "Leonardo Takai / Guilherme Ferreira /Gabriela Araujo Pereira",
+      "Leonardo Takai / Priscila Sato",
+      "Leonardo Takai / Priscila Sato / Camila",
+      "Leonardo Takai / Priscila Sato / Pamela Jordão",
+      "Leonardo Takai / Priscila Sato / Pedro Souza"
+    ],
+    "Operações": [
+      "Ana Pereira",
+      "Carol Derra",
+      "Carol / Beatriz Moreira",
+      "Carol Derra / André Scandiussi",
+      "Carol Derra / Fernanda Boff",
+      "Carol Derra / Vinícius Kuelle",
+      "Izabel Vieira",
+      "Raquel Hipólito",
+      "Raquel Hipólito / Fernanda knijnik / Anne Luz",
+      "Silvio Eiras",
+      "Silvio Eiras / Cadu Pasini",
+      "Silvio Eiras / Giovana Pagliarini"
+    ],
+    "Produção": ["Ana Luisa Andre"],
+    "BI": [
+      "Caetano Camara",
+      "Caetano Camara / Augusto Domingues",
+      "Caetano Camara / Camila Franco",
+      "Caetano Camara / Thalles Grassi"
+    ]
   },
   
   clients: [

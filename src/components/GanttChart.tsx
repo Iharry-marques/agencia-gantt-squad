@@ -39,6 +39,7 @@ interface GanttChartProps {
   activeTab: 'equipe' | 'cliente';
   filters: {
     group: string;
+    subgroup: string;
     client: string;
     type: string;
     status: string;
@@ -78,6 +79,14 @@ const GanttChart: React.FC<GanttChartProps> = ({ data, activeTab, filters, viewM
         const groupParts = item.group_subgroup?.split(' / ');
         return groupParts && groupParts.length > 0 && groupParts[0] === filters.group;
       });
+      
+      // Apply subgroup filter if selected
+      if (filters.subgroup) {
+        filteredData = filteredData.filter(item => {
+          const subgroupPath = item.group_subgroup?.substring(filters.group.length + 3); // +3 for " / "
+          return subgroupPath && subgroupPath.startsWith(filters.subgroup);
+        });
+      }
     }
     
     if (filters.client) {
@@ -165,7 +174,7 @@ const GanttChart: React.FC<GanttChartProps> = ({ data, activeTab, filters, viewM
   
   return (
     <div className="relative">
-      <div className="gantt-container bg-white border border-gray-200 rounded-lg">
+      <div className="gantt-container bg-white border border-gray-200 rounded-lg shadow-md">
         <div ref={containerRef} className="svg-container">
           <div className="flex items-center justify-center h-full">
             <div className="text-lg text-gray-500">
@@ -218,7 +227,7 @@ const GanttChart: React.FC<GanttChartProps> = ({ data, activeTab, filters, viewM
             ? (task._data.group_subgroup?.split(' / ')[0] || '')
             : task._data.client;
           
-          const color = stringToColor(colorKey);
+          const color = colorKey === 'Criação' ? '#ffc801' : stringToColor(colorKey);
           return `.gantt .bar.task-${colorKey.replace(/\s+/g, '-').toLowerCase()} .bar-progress { fill: ${color}; }
                  .gantt .bar.task-${colorKey.replace(/\s+/g, '-').toLowerCase()} { fill: ${color}25; stroke: ${color}; }`;
         }).join('\n')}
