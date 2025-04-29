@@ -1,10 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
-import Header from '@/components/Header';
+import Header from '../components/Header';
 import Filters from '@/components/Filters';
 import GanttControls from '@/components/GanttControls';
-import GanttChart from '@/components/GanttChart';
-import { loadData } from '@/lib/mockData';
+import GanttChart from '../components/GanttChart';
+import { loadData } from '../lib/mockData';
 import { exportToCSV } from '@/lib/exportUtils';
 import { useToast } from '@/components/ui/use-toast';
 
