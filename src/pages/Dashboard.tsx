@@ -138,8 +138,8 @@ const Dashboard = () => {
       
       <footer className="mt-auto py-4 bg-white border-t border-gray-200">
         <div className="container mx-auto px-4 flex justify-center items-center text-gray-500 text-sm gap-2">
-          <img src="/lovable-uploads/9ae2674c-6fc6-4ca8-8b8b-647d57cffc61.png" alt="SOMOS CREATORS Logo" className="h-6" />
-          <span>SOMOS • CREATORS | Dashboard Gantt © {new Date().getFullYear()}</span>
+          <img src="/lovable-uploads/9ae2674c-6fc6-4ca8-8b8b-647d57cffc61.png" alt="Suno Logo" className="h-6" />
+          <span>Suno | Dashboard Gantt © {new Date().getFullYear()}</span>
         </div>
       </footer>
     </div>

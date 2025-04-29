@@ -12,9 +12,9 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <img src="/lovable-uploads/9ae2674c-6fc6-4ca8-8b8b-647d57cffc61.png" alt="SOMOS CREATORS Logo" className="h-10" />
+            <img src="/lovable-uploads/9ae2674c-6fc6-4ca8-8b8b-647d57cffc61.png" alt="Suno Logo" className="h-14" />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">SOMOS • CREATORS</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Suno</h1>
               <span className="text-sm text-gray-500">Dashboard Gantt</span>
             </div>
           </div>
